@@ -232,7 +232,7 @@ const Hero = () => (
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          src="/Untitled design.png" 
+          src="/troyia-hero.png" 
           alt="Troyia - Founder" 
           className="w-auto h-[70vh] lg:h-[80vh] max-h-[850px] object-contain object-bottom z-20 drop-shadow-2xl"
           referrerPolicy="no-referrer"
