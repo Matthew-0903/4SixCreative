@@ -399,10 +399,60 @@ const MediaHub = () => {
     { id: 7, url: 'https://www.instagram.com/reel/DDQI1U6ytvy/embed' },
     { id: 8, url: 'https://www.instagram.com/reel/DBh4OoTOy3V/embed' },
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % videos.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+  const totalVideos = videos.length;
+  // Start at the center video (middle of the array)
+  const startIndex = Math.floor(totalVideos / 2);
+  // Triple the array for infinite loop: [clone-set] [original-set] [clone-set]
+  const extendedVideos = [...videos, ...videos, ...videos];
+  // Start index in the extended array (middle set, center video)
+  const [currentIndex, setCurrentIndex] = useState(totalVideos + startIndex);
+  const [isAnimating, setIsAnimating] = useState(true);
+
+  const CARD_WIDTH = 340;
+  const GAP = 32; // gap-8 = 2rem = 32px
+  const STEP = CARD_WIDTH + GAP; // 372px
+
+  const next = () => {
+    setIsAnimating(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+  const prev = () => {
+    setIsAnimating(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  // Seamless reset when crossing clone boundaries
+  useEffect(() => {
+    if (currentIndex >= totalVideos * 2) {
+      // Past the end of the middle set — reset to start of middle set
+      const timeout = setTimeout(() => {
+        setIsAnimating(false);
+        setCurrentIndex(currentIndex - totalVideos);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+    if (currentIndex < totalVideos) {
+      // Before the start of the middle set — reset to end of middle set
+      const timeout = setTimeout(() => {
+        setIsAnimating(false);
+        setCurrentIndex(currentIndex + totalVideos);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, totalVideos]);
+
+  // Re-enable animation after a silent reset
+  useEffect(() => {
+    if (!isAnimating) {
+      const raf = requestAnimationFrame(() => {
+        setIsAnimating(true);
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [isAnimating]);
+
+  const realIndex = ((currentIndex % totalVideos) + totalVideos) % totalVideos;
 
   return (
     <section id="media" className="py-24 bg-brand-cream text-brand-black overflow-hidden relative">
@@ -439,22 +489,26 @@ const MediaHub = () => {
 
       <div className="relative w-full py-10 overflow-hidden">
         <motion.div
-          className="flex gap-8 px-[50vw]"
-          animate={{ x: `calc(-${currentIndex * 372}px - 170px)` }}
-          transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          className="flex gap-8"
+          animate={{ x: `calc(50vw - ${currentIndex * STEP}px - ${CARD_WIDTH / 2}px)` }}
+          transition={isAnimating ? { type: "spring", stiffness: 200, damping: 25 } : { duration: 0 }}
         >
-          {videos.map((v, i) => {
-            const isCenter = i === currentIndex;
+          {extendedVideos.map((v, i) => {
+            const videoRealIndex = i % totalVideos;
+            const isCenter = videoRealIndex === realIndex;
             return (
               <motion.div
-                key={v.id}
+                key={`${v.id}-${i}`}
                 animate={{
                   scale: isCenter ? 1.05 : 0.9,
                   opacity: isCenter ? 1 : 0.4,
                 }}
                 transition={{ duration: 0.4 }}
                 className={`w-[340px] shrink-0 flex justify-center bg-white rounded-2xl overflow-hidden shadow-2xl border ${isCenter ? 'border-brand-orange shadow-brand-orange/20' : 'border-brand-tan/30 cursor-pointer'}`}
-                onClick={() => setCurrentIndex(i)}
+                onClick={() => {
+                  setIsAnimating(true);
+                  setCurrentIndex(i);
+                }}
               >
                 <div className={`w-full h-[450px] overflow-hidden rounded-2xl relative ${!isCenter ? 'pointer-events-none' : ''}`}>
                   <iframe
