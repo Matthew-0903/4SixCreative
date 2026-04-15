@@ -35,7 +35,7 @@ const ScrollToTop = () => {
 
 const BlurText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
   const words = text.split(' ');
-  
+
   return (
     <div className={`flex flex-wrap ${className}`}>
       {words.map((word, i) => (
@@ -163,108 +163,108 @@ const Hero = () => (
         <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-lavender/25 blur-[120px] mix-blend-multiply"></div>
         <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] rounded-full bg-brand-tan/20 blur-[100px] mix-blend-multiply"></div>
         <div className="absolute top-[40%] right-[20%] w-[30%] h-[30%] rounded-full bg-brand-green/10 blur-[80px] mix-blend-multiply"></div>
-        
+
         {/* Noise Overlay */}
         <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-noise"></div>
       </div>
 
       <div className="flex-grow grid grid-cols-1 lg:grid-cols-12 px-6 md:px-16 gap-12 items-stretch relative z-10">
         <div className="relative z-10 lg:col-span-6 flex flex-col justify-center py-12 md:py-20">
-          <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="inline-flex items-center gap-3 text-brand-orange font-sans text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-8"
-        >
-          <span className="w-8 h-[1px] bg-brand-orange"></span>
-          Social Media Marketing Agency
-        </motion.div>
-        
-        <h1 className="font-serif text-6xl md:text-[clamp(4rem,7vw,6.5rem)] font-normal leading-[1.05] mb-6 text-brand-black tracking-tight flex flex-col">
-          <BlurText text="Your Brand," delay={0.4} />
-          <span className="italic text-brand-orange"><BlurText text="Amplified." delay={0.7} /></span>
-        </h1>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }}
-          className="text-lg md:text-xl text-brand-charcoal/80 leading-relaxed font-light max-w-[480px] mb-10 font-sans"
-        >
-          We produce scroll-stopping video content and run strategic social media campaigns that turn followers into loyal, paying clients.
-        </motion.p>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" }}
-          className="flex flex-wrap gap-5 items-center"
-        >
-          <Link to="/join" className="bg-brand-black text-white px-9 py-4 rounded-full text-sm font-semibold tracking-wide uppercase hover:bg-brand-orange transition-colors duration-300 inline-block">
-            Book a Free Call
-          </Link>
-          <a 
-            href="#media" 
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('media')?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#media');
-            }}
-            className="text-brand-black px-2 py-4 text-sm font-semibold tracking-wide uppercase hover:text-brand-orange transition-colors duration-300 inline-flex items-center gap-2 group"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="inline-flex items-center gap-3 text-brand-orange font-sans text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-8"
           >
-            See Our Work
-            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </a>
-        </motion.div>
-      </div>
+            <span className="w-8 h-[1px] bg-brand-orange"></span>
+            Social Media Marketing Agency
+          </motion.div>
 
-      <div className="relative z-10 lg:col-span-6 h-full w-full hidden md:flex items-end justify-center">
-        {/* Background Glow */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-tan/40 rounded-full blur-3xl -z-10"
-        />
+          <h1 className="font-serif text-6xl md:text-[clamp(4rem,7vw,6.5rem)] font-normal leading-[1.05] mb-6 text-brand-black tracking-tight flex flex-col">
+            <BlurText text="Your Brand," delay={0.4} />
+            <span className="italic text-brand-orange"><BlurText text="Amplified." delay={0.7} /></span>
+          </h1>
 
-        {/* Main Transparent Image */}
-        <motion.img 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          src="/troyia-hero.png" 
-          alt="Troyia - Founder" 
-          className="w-auto h-[70vh] lg:h-[80vh] max-h-[850px] object-contain object-bottom z-20 drop-shadow-2xl"
-          referrerPolicy="no-referrer"
-        />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }}
+            className="text-lg md:text-xl text-brand-charcoal/80 leading-relaxed font-light max-w-[480px] mb-10 font-sans"
+          >
+            We produce scroll-stopping video content and run strategic social media campaigns that turn followers into loyal, paying clients.
+          </motion.p>
 
-        {/* Abstract Floating Elements */}
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] left-[15%] z-30"
-        >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-orange to-[#e9bc8b] opacity-80 blur-[2px] shadow-lg"></div>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" }}
+            className="flex flex-wrap gap-5 items-center"
+          >
+            <Link to="/join" className="bg-brand-black text-white px-9 py-4 rounded-full text-sm font-semibold tracking-wide uppercase hover:bg-brand-orange transition-colors duration-300 inline-block">
+              Book a Free Call
+            </Link>
+            <a
+              href="#media"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('media')?.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState(null, '', '#media');
+              }}
+              className="text-brand-black px-2 py-4 text-sm font-semibold tracking-wide uppercase hover:text-brand-orange transition-colors duration-300 inline-flex items-center gap-2 group"
+            >
+              See Our Work
+              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </a>
+          </motion.div>
+        </div>
 
-        <motion.div
-          animate={{ y: [0, 25, 0], rotate: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-[40%] right-[10%] z-30"
-        >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-lavender to-brand-green opacity-70 blur-[1px] shadow-md"></div>
-        </motion.div>
+        <div className="relative z-10 lg:col-span-6 h-full w-full hidden md:flex items-end justify-center">
+          {/* Background Glow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-tan/40 rounded-full blur-3xl -z-10"
+          />
 
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-[25%] left-[10%] z-30"
-        >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="#f56830"/>
-          </svg>
-        </motion.div>
-      </div>
+          {/* Main Transparent Image */}
+          <motion.img
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            src="/troyia-hero.png"
+            alt="Troyia - Founder"
+            className="w-auto h-[70vh] lg:h-[80vh] max-h-[850px] object-contain object-bottom z-20 drop-shadow-2xl"
+            referrerPolicy="no-referrer"
+          />
+
+          {/* Abstract Floating Elements */}
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[20%] left-[15%] z-30"
+          >
+            <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-orange to-[#e9bc8b] opacity-80 blur-[2px] shadow-lg"></div>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 25, 0], rotate: [0, -15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-[40%] right-[10%] z-30"
+          >
+            <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-lavender to-brand-green opacity-70 blur-[1px] shadow-md"></div>
+          </motion.div>
+
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-[25%] left-[10%] z-30"
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="#f56830" />
+            </svg>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scrolling Marquee Banner */}
@@ -306,7 +306,7 @@ const Services = () => (
     {/* Background elements for Services */}
     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[100px] pointer-events-none"></div>
     <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-lavender/10 rounded-full blur-[100px] pointer-events-none"></div>
-    
+
     <div className="max-w-5xl mx-auto relative z-10">
       <div className="text-center mb-16">
         <Reveal>
@@ -325,31 +325,31 @@ const Services = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[
-          { 
-            tag: 'Most Popular', 
-            name: 'Full-Service Social Media Management', 
-            desc: 'We take over your social channels completely. Strategy, content creation, scheduling, and community management across all platforms.', 
+          {
+            tag: 'Most Popular',
+            name: 'Full-Service Social Media Management',
+            desc: 'We take over your social channels completely. Strategy, content creation, scheduling, and community management across all platforms.',
             price: 'Custom Quote',
             linkText: 'Apply Now'
           },
-          { 
-            tag: 'Video', 
-            name: 'Video Editing & Production', 
-            desc: 'Reels, brand films, and social-first video edits crafted to convert — not just look good. We handle the editing so you can focus on creating.', 
+          {
+            tag: 'Video',
+            name: 'Video Editing & Production',
+            desc: 'Reels, brand films, and social-first video edits crafted to convert — not just look good. We handle the editing so you can focus on creating.',
             price: 'Starting at $1,500/mo',
             linkText: 'View Packages'
           },
-          { 
-            tag: 'Strategy', 
-            name: '1:1 Social Media Strategy Call', 
-            desc: 'A 60-minute deep dive into your current strategy. We audit your profiles and give you a clear, actionable roadmap for growth.', 
+          {
+            tag: 'Strategy',
+            name: '1:1 Social Media Strategy Call',
+            desc: 'A 60-minute deep dive into your current strategy. We audit your profiles and give you a clear, actionable roadmap for growth.',
             price: '$250',
             linkText: 'Book Session'
           },
-          { 
-            tag: 'Digital Product', 
-            name: 'The Content Creator Playbook', 
-            desc: 'Our exact frameworks for creating viral hooks, structuring videos, and batching content like a pro. Instant download.', 
+          {
+            tag: 'Digital Product',
+            name: 'The Content Creator Playbook',
+            desc: 'Our exact frameworks for creating viral hooks, structuring videos, and batching content like a pro. Instant download.',
             price: '$47',
             linkText: 'Get the Playbook'
           },
@@ -401,8 +401,8 @@ const MediaHub = () => {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => setCurrentIndex((prev) => Math.min(prev + 1, videos.length - 1));
-  const prev = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  const next = () => setCurrentIndex((prev) => (prev + 1) % videos.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
 
   return (
     <section id="media" className="py-24 bg-brand-cream text-brand-black overflow-hidden relative">
@@ -414,23 +414,21 @@ const MediaHub = () => {
 
       <div className="px-6 md:px-16 relative z-10">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
+          <div className="flex flex-col items-center mb-12 gap-4">
+            <div className="text-center">
               <span className="text-xs font-bold tracking-[0.14em] uppercase text-brand-orange block mb-3">Portfolio</span>
               <h2 className="font-serif italic font-normal text-4xl md:text-[clamp(2rem,3.5vw,2.8rem)] leading-[1.15] text-brand-black">Real Work. Real Results.</h2>
             </div>
-            <div className="flex gap-4">
-              <button 
-                onClick={prev} 
-                disabled={currentIndex === 0}
-                className="w-12 h-12 rounded-full border border-brand-tan/50 flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-brand-black disabled:hover:border-brand-tan/50"
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={prev}
+                className="w-12 h-12 rounded-full border border-brand-tan/50 flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all"
               >
                 <ChevronLeft size={24} />
               </button>
-              <button 
-                onClick={next} 
-                disabled={currentIndex === videos.length - 1}
-                className="w-12 h-12 rounded-full border border-brand-tan/50 flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-brand-black disabled:hover:border-brand-tan/50"
+              <button
+                onClick={next}
+                className="w-12 h-12 rounded-full border border-brand-tan/50 flex items-center justify-center hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all"
               >
                 <ChevronRight size={24} />
               </button>
@@ -440,7 +438,7 @@ const MediaHub = () => {
       </div>
 
       <div className="relative w-full py-10 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="flex gap-8 px-[50vw]"
           animate={{ x: `calc(-${currentIndex * 372}px - 170px)` }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -450,7 +448,7 @@ const MediaHub = () => {
             return (
               <motion.div
                 key={v.id}
-                animate={{ 
+                animate={{
                   scale: isCenter ? 1.05 : 0.9,
                   opacity: isCenter ? 1 : 0.4,
                 }}
@@ -459,10 +457,10 @@ const MediaHub = () => {
                 onClick={() => setCurrentIndex(i)}
               >
                 <div className={`w-full h-[450px] overflow-hidden rounded-2xl relative ${!isCenter ? 'pointer-events-none' : ''}`}>
-                  <iframe 
-                    src={v.url} 
-                    className="w-full h-[650px] absolute top-[-2px] left-0" 
-                    frameBorder="0" 
+                  <iframe
+                    src={v.url}
+                    className="w-full h-[650px] absolute top-[-2px] left-0"
+                    frameBorder="0"
                     scrolling="no"
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                     allowFullScreen
@@ -490,7 +488,7 @@ const Process = () => (
       <div className="max-w-4xl mx-auto space-y-12 relative z-10">
         {/* Vertical Line */}
         <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-brand-tan/30 -z-10 hidden md:block"></div>
-        
+
         {[
           { n: '1', title: 'Discovery Call', desc: '30 minutes to understand your brand, audience, and business goals inside out.' },
           { n: '2', title: 'Custom Strategy', desc: 'We build a content roadmap aligned with your voice, industry, and growth KPIs.' },
@@ -507,11 +505,11 @@ const Process = () => (
                   </div>
                 )}
               </div>
-              
+
               <div className="w-14 h-14 shrink-0 rounded-full bg-brand-orange text-white flex items-center justify-center font-serif text-2xl italic shadow-[0_0_20px_rgba(245,104,48,0.3)] z-10 mx-auto md:mx-0">
                 {step.n}
               </div>
-              
+
               <div className="w-full md:w-1/2 md:pl-12 text-center md:text-left">
                 {i % 2 !== 0 ? (
                   <div>
@@ -536,13 +534,15 @@ const Process = () => (
 const Testimonials = () => (
   <section id="testimonials" className="py-24 px-6 md:px-16 bg-brand-cream">
     <Reveal>
-      <span className="text-xs font-bold tracking-[0.14em] uppercase text-brand-orange block mb-3">Client Reviews</span>
-      <h2 className="font-serif italic font-normal text-4xl md:text-[clamp(2rem,3.5vw,2.8rem)] leading-[1.15] text-brand-black">What Our Clients Say</h2>
+      <div className="text-center mb-2">
+        <span className="text-xs font-bold tracking-[0.14em] uppercase text-brand-orange block mb-3">Client Reviews</span>
+        <h2 className="font-serif italic font-normal text-4xl md:text-[clamp(2rem,3.5vw,2.8rem)] leading-[1.15] text-brand-black">What Our Clients Say</h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
         {[
           { quote: "4Six transformed our Instagram. Engagement tripled in 60 days and we closed 3 contracts directly from social media.", av: "MR", name: "Marcus Reed", biz: "Reed Real Estate Group", bg: "bg-brand-orange/10", color: "text-brand-orange" },
           { quote: "The video content they created for our launch got 200K organic views. The ROI is unlike anything we've seen before.", av: "JC", name: "Jasmine Cole", biz: "GLOW Beauty Co.", bg: "bg-brand-lavender/20", color: "text-brand-lavender" },
-          { quote: "They truly understand your vision and deliver beyond expectations. Our personal brand now feels completely world-class.", av: "DW", name: "Demi Williams", biz: "Brand Coach & Speaker", bg: "bg-brand-green/10", color: "text-brand-green" },
+          { quote: "They truly understand your vision and deliver beyond expectations.", av: "DW", name: "Demi Williams", biz: "Brand Coach & Speaker", bg: "bg-brand-green/10", color: "text-brand-green" },
         ].map((t, i) => (
           <Reveal key={i} delay={i * 0.1}>
             <div className="bg-white border border-brand-border rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.07)]">
@@ -648,13 +648,13 @@ const Contact = () => (
 
 const InstagramGrid = () => {
   const items = [
-    { image: '/image1.jpg', text: 'Social Feed' },
+    { image: '/image1.jpeg', text: 'Social Feed' },
     { image: '/image2.jpg', text: 'Aesthetic' },
     { image: '/image3.jpg', text: 'Vibes' },
     { image: '/image4.jpeg', text: 'Creative' },
     { image: '/image5.jpg', text: 'Growth' },
     { image: '/image6.jpg', text: 'Brand' },
-    { image: '/image7.jpeg', text: 'Strategy' },
+    { image: '/image7.jpg', text: 'Strategy' },
   ];
 
   return (
@@ -667,11 +667,11 @@ const InstagramGrid = () => {
           </h2>
         </div>
         <div style={{ height: '600px', position: 'relative' }}>
-          <CircularGallery 
+          <CircularGallery
             items={items}
-            bend={3} 
-            textColor="#1a1a1a" 
-            borderRadius={0.05} 
+            bend={3}
+            textColor="#1a1a1a"
+            borderRadius={0.05}
             scrollSpeed={2}
             scrollEase={0.05}
           />
@@ -689,8 +689,8 @@ const Footer = () => (
 
     <div className="max-w-6xl mx-auto relative z-10">
       <div className="flex flex-col items-center text-center mb-20">
-        <SplitText 
-          text="Let's build something beautiful." 
+        <SplitText
+          text="Let's build something beautiful."
           className="font-serif italic text-5xl md:text-7xl mb-8 text-white"
           delay={200}
         />
